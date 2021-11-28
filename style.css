@@ -41,3 +41,7 @@
   width: 100px;
   height: 100px;
 }
+.button > button .equal {
+  height: 200px;
+  width: 200px;
+}

@@ -80,24 +80,24 @@ function clear_all(){
 }
 
 //TODO: FIX DECIAML BUG 
-// function addDecimal(){
-//     let number = values[current];
-//     number = number+".";
-//     console.log(number);
-//     values[current] = parseFloat(number);
-// }
+function addDecimal(){
+    // let number = values[current];
+    // number = number+".0";
+    // console.log(number);
+    // values[current] = parseFloat(number);
+    values[current] = values[current] *1.0
+    updateText();
+}
 
 //Other key event listener 
 const remove = document.querySelector('.delete');
 const multiply = document.querySelector('.multiply')
 const clear = document.querySelector('.clear');
-// const dot = document.querySelector('.decimal');
-const evaluate = document.querySelectorAll('.equal');
+const dot = document.querySelector('.decimal');
+const evaluate = document.querySelector('.equal');
 const negative = document.querySelector('.plus-minus')
 
-evaluate.forEach((e) =>{
-    e.addEventListener('click',operate)
-})
+evaluate.addEventListener('click',operate);
 
 
 negative.addEventListener('click',() =>{
@@ -106,6 +106,6 @@ negative.addEventListener('click',() =>{
 })
 remove.addEventListener('click',del);
 clear.addEventListener('click',clear_all)
-// dot.addEventListener('click',addDecimal);
+dot.addEventListener('click',addDecimal);
 
 
