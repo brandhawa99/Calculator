@@ -10,6 +10,9 @@ const screen = document.querySelector('.screen-text');
 //getAllNumbers
 const numbers = document.querySelectorAll("#num");
 
+//Get all operators
+const op = document.querySelectorAll('#op');
+
 function operate(operator, vals){
     if(operator == 'x'){
         return vals[0]*vals[1];
@@ -38,6 +41,15 @@ numbers.forEach((number) =>{
     })
 })
 
+//Operator Event Listener
+op.forEach((oper) =>{
+    oper.addEventListener('click',() =>{
+        operator = oper.value; 
+        current = 1;
+
+    })
+})
+
 //Delete function 
 function del(){
     // console.log(values[0]);
@@ -51,12 +63,22 @@ function del(){
     updateText();
 }
 
+function clear_all(){
+    operator = '';
+    current = 0; 
+    values[0]  = 0 ; 
+    values[1] = 0; 
+    updateText();
+
+}
 //Other key event listener 
 const remove = document.querySelector('.delete');
 const multiply = document.querySelector('.multiply')
+const clear = document.querySelector('.clear');
 
 
 remove.addEventListener('click',del);
+clear.addEventListener('click',clear_all)
 
 
 
