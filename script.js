@@ -40,6 +40,24 @@ numbers.forEach((number) =>{
 
 //Delete function 
 function del(){
-
+    // console.log(values[0]);
+    let num = values[current];
+    let stringNum = num.toString(); 
+    stringNum = stringNum.slice(0,-1);
+    values[current] = parseFloat(stringNum);
+    if(isNaN(values[current])){
+        values[current] =0; 
+    }
+    updateText();
 }
+
+//Other key event listener 
+const remove = document.querySelector('.delete');
+const multiply = document.querySelector('.multiply')
+
+
+remove.addEventListener('click',del);
+
+
+
 

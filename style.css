@@ -13,6 +13,7 @@
 }
 .screen-text {
   margin-right: 10px;
+  overflow: hidden;
 }
 .buttons {
   display: flex;
