@@ -13,19 +13,26 @@ const numbers = document.querySelectorAll("#num");
 //Get all operators
 const op = document.querySelectorAll('#op');
 
-function operate(operator, vals){
+function operate(){
+    let reslut = 0; 
     if(operator == 'x'){
-        return vals[0]*vals[1];
+        reslut = values[0]*values[1];
     }
     if(operator == '/'){
-        return vals[0]/vals[1];
+        reslut = values[0]/values[1];
     }
     if(operator == '+'){
-        return vals[0]+vals[1];
+        reslut = values[0]+values[1];
     }
     if(operator == '-'){
-        return vals[0]-vals[1];
+        reslut = values[0]-values[1];
     }
+    values[0] = reslut; 
+    values[1] = 0; 
+    current = 0; 
+    updateText(); 
+    current = 1; 
+    return;
 
 }
 function updateText(){
@@ -46,7 +53,7 @@ op.forEach((oper) =>{
     oper.addEventListener('click',() =>{
         operator = oper.value; 
         current = 1;
-
+        updateText();
     })
 })
 
@@ -71,15 +78,34 @@ function clear_all(){
     updateText();
 
 }
+
+//TODO: FIX DECIAML BUG 
+// function addDecimal(){
+//     let number = values[current];
+//     number = number+".";
+//     console.log(number);
+//     values[current] = parseFloat(number);
+// }
+
 //Other key event listener 
 const remove = document.querySelector('.delete');
 const multiply = document.querySelector('.multiply')
 const clear = document.querySelector('.clear');
+// const dot = document.querySelector('.decimal');
+const evaluate = document.querySelectorAll('.equal');
+const negative = document.querySelector('.plus-minus')
+
+evaluate.forEach((e) =>{
+    e.addEventListener('click',operate)
+})
 
 
+negative.addEventListener('click',() =>{
+    values[current] = values[current]*-1; 
+    updateText();
+})
 remove.addEventListener('click',del);
 clear.addEventListener('click',clear_all)
-
-
+// dot.addEventListener('click',addDecimal);
 
 
