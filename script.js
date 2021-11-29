@@ -43,7 +43,7 @@ function updateText(){
 //Number Event listeners
 numbers.forEach((number) =>{
     number.addEventListener('click',() =>{
-        values[current] = values[current]*10+parseFloat(number.value);
+        values[current] = parseFloat(values[current]+""+(number.value));
         updateText();
     })
 })
@@ -85,7 +85,12 @@ function addDecimal(){
     // number = number+".0";
     // console.log(number);
     // values[current] = parseFloat(number);
-    values[current] = values[current] *1.0
+    values[current] = parseFloat(values[current]+""+'.0')
+    updateText();
+}
+
+function makeNegative(){
+    values[current] = values[current]*-1; 
     updateText();
 }
 
@@ -96,16 +101,20 @@ const clear = document.querySelector('.clear');
 const dot = document.querySelector('.decimal');
 const evaluate = document.querySelector('.equal');
 const negative = document.querySelector('.plus-minus')
+const author = document.querySelector('.author');
 
-evaluate.addEventListener('click',operate);
 
 
-negative.addEventListener('click',() =>{
-    values[current] = values[current]*-1; 
-    updateText();
-})
+negative.addEventListener('click',makeNegative)
 remove.addEventListener('click',del);
 clear.addEventListener('click',clear_all)
 dot.addEventListener('click',addDecimal);
+evaluate.addEventListener('click',operate);
+author.addEventListener('click',() =>{
+    values[current] = "BY: BRandhawa"
+    updateText()
+    setTimeout(clear_all,2000);
+
+})
 
 
